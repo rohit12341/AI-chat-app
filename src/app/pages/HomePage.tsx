@@ -1,0 +1,10 @@
+"use client";
+import ChatWindow from "../features/chat/components/ChatWindow";
+
+export default function HomePage() {
+  return (
+    <main className="flex min-h-screen items-center justify-center p-6">
+      <ChatWindow />
+    </main>
+  );
+}

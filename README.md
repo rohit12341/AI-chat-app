@@ -1,50 +1,86 @@
-# AI Chat App (React + TypeScript + Vite)
+# AI Chat App
 
-A frontend scaffold for experimenting with generative AI chat experiences (ChatGPT-style). This project provides a React + TypeScript + Vite app where you'll implement an AI chatbot UI and connect it to a backend or third‑party AI API.
+A Next.js-based AI assistant chat application inspired by ChatGPT. This app combines a modern React UI with server-side API routing, state management, and Tailwind CSS to simulate a conversational assistant experience.
 
-**Goals**
+## What this project does
 
-- **Explore**: prototype chat UX, message streaming, and system prompts.
-- **Integrate**: connect to an AI provider (OpenAI, Anthropic, etc.) or your own server.
-- **Iterate**: add features like message history, attachments, and fine‑tuned prompts.
+- Builds an AI-powered chat interface using Next.js App Router.
+- Uses Redux Toolkit for centralized chat state management.
+- Supports server-side API routing to proxy requests to an AI backend.
+- Uses Tailwind CSS for responsive UI styling and dark mode-inspired theme.
+- Separates client and server components for performance and maintainability.
 
-**Quickstart**
+## Key features
 
-- **Install deps**: `npm install`
-- **Run dev server**: `npm run dev` (opens at http://localhost:5173)
-- **Build**: `npm run build`
-- **Preview**: `npm run preview`
+- Chat interface with message list and input area
+- Redux-powered state management for messages, loading, and typing state
+- Next.js `app` directory structure with layouts and pages
+- Custom API route to forward chat requests to an AI service
+- Styling with Tailwind CSS and global CSS imports
 
-**Environment**
+## How it works
 
-- The frontend does not include a production AI backend. For local testing you can either:
-  - Provide a backend proxy that holds your API key and exposes a chat endpoint, or
-  - Use a provider client directly from the frontend (not recommended for public keys).
-- Recommended Vite env var for a backend URL: `VITE_AI_API_URL`
+1. User enters a message in the chat input.
+2. The message is stored in Redux and displayed in the chat window.
+3. The app sends the message to the AI backend through a Next.js API route.
+4. The server route forwards the request to the configured AI service.
+5. The response is returned and rendered as an assistant message in the conversation.
 
-**Project structure (high level)**
+## Project structure
 
-- `src/`: main application source
-- `src/pages/`: page views like `ChatPage` and `HomePage`
-- `src/components/`: reusable UI components
-- `src/services/`: API and AI integration code
-- `postcss.config.ts`, `tailwind.config.*`: styling setup
+- `app/` - Next.js App Router files and layout
+- `app/page.tsx` - root page that loads the chat UI
+- `src/app/store/` - Redux store setup and typed exports
+- `src/app/features/chat/` - chat slice and chat state logic
+- `src/app/components/` - chat UI components and layout components
+- `src/index.css` - Tailwind directives and global styling
+- `tailwind.config.cjs` - Tailwind CSS content and safelist config
+- `postcss.config.cjs` - PostCSS plugin config for Tailwind
 
-**Developer notes**
+## Setup
 
-- `postcss.config.ts` uses `@tailwindcss/postcss` (PostCSS plugin). Vite should not load `tailwindcss` directly as a plugin.
-- Use `VITE_` prefixed env vars for values exposed to the client.
+Install dependencies:
 
-**Next steps / suggestions**
+```bash
+npm install
+```
 
-- Implement `src/services/chat.ts` to call your AI backend.
-- Add authentication and rate limiting on the server if you expose an API.
-- Add tests for critical components and end-to-end flows.
+Run the development server:
 
-**License**
+```bash
+npm run dev
+```
 
-- MIT — feel free to adapt for experiments and learning.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
---
-This README is at [README.md](README.md).
-reactX.configs['recommended-typescript'],
+## Environment
+
+Create a `.env` file if you need custom AI backend configuration. Example env variables:
+
+```env
+AI_API_URL=https://your-ai-proxy-endpoint.example.com
+```
+
+If the app uses a Next.js API route, configure the backend URL in that route or use environment variables as needed.
+
+## Notes
+
+- The AI assistant behavior depends on the backend service you connect to.
+- The current implementation is designed as a front-end shell that can be integrated with any compatible AI API.
+- Keep server-only logic in Next.js API routes and client logic inside `"use client"` components.
+
+## Deploy
+
+To build for production:
+
+```bash
+npm run build
+```
+
+Then start the production server:
+
+```bash
+npm start
+```
+
+For deployment, use Vercel, Netlify, or any platform that supports Next.js.

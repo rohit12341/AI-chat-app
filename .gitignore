@@ -7,9 +7,21 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+node_modules/
+
+# Next.js build output
+.next/
+.next/cache/
+out/
+build/
+
+# Vercel
+.vercel/
+.vercel/output/
+
+# Distribution / production
+dist/
+dist-ssr/
 *.local
 
 # Editor directories and files
@@ -22,3 +34,16 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Env files
+.env.local
+.env.*.local
+.env
+
+# Misc caches
+.cache/
+.parcel-cache/
+coverage/
+
+# Optional npm cache files
+*.tgz
