@@ -11,7 +11,7 @@ export default function Message({ message }: { message: MessageType }) {
 
   return (
     <div className={`flex w-full ${isUser ? "justify-end" : "justify-start"}`}>
-      <div className={`w-full max-w-full flex flex-col justify-end `}>
+      <div className={`max-w-full flex flex-col justify-end `}>
         <div
           className={`rounded-3xl px-5 py-3 whitespace-pre-wrap
           ${isUser ? "bg-black text-white" : "bg-zinc-100 text-black"}`}
