@@ -15,6 +15,21 @@ const chatSlice = createSlice({
     addMessage: (state: ChatState, action: PayloadAction<Message>) => {
       state.messages = [...state.messages, action.payload];
     },
+    updateMessage: (
+      state: ChatState,
+      action: PayloadAction<{ id: string; content: string }>,
+    ) => {
+      const message = state.messages.find((m) => m.id === action.payload.id);
+      if (message) {
+        message.content = action.payload.content;
+      }
+    },
+    completeMessage: (state: ChatState, action: PayloadAction<string>) => {
+      const message = state.messages.find((m) => m.id === action.payload);
+      if (message) {
+        message.status = "completed";
+      }
+    },
     setLoading: (state: ChatState, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
     },
@@ -29,6 +44,12 @@ const chatSlice = createSlice({
   },
 });
 
-export const { addMessage, setLoading, setIsTyping, clearChat } =
-  chatSlice.actions;
+export const {
+  addMessage,
+  setLoading,
+  setIsTyping,
+  clearChat,
+  updateMessage,
+  completeMessage,
+} = chatSlice.actions;
 export default chatSlice.reducer;

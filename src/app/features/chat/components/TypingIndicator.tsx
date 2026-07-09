@@ -1,9 +1,17 @@
 export default function TypingIndicator() {
   return (
-    <div className="flex items-center space-x-2">
-      <div className="h-2 w-2 rounded-full bg-gray-500 animate-bounce"></div>
-      <div className="h-2 w-2 rounded-full bg-gray-500 animate-bounce delay-200"></div>
-      <div className="h-2 w-2 rounded-full bg-gray-500 animate-bounce delay-400"></div>
+    <div className="flex justify-start">
+      <div className="flex gap-1 rounded-3xl bg-zinc-100 px-5 py-4">
+        <span className="h-2 w-2 animate-bounce rounded-full bg-zinc-500" />
+        <span
+          className="h-2 w-2 animate-bounce rounded-full bg-zinc-500"
+          style={{ animationDelay: "150ms" }}
+        />
+        <span
+          className="h-2 w-2 animate-bounce rounded-full bg-zinc-500"
+          style={{ animationDelay: "300ms" }}
+        />
+      </div>
     </div>
   );
 }
