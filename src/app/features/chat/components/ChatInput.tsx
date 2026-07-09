@@ -19,10 +19,11 @@ export default function ChatInput() {
     await sendMessage(message);
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+  const handleKeyDown = async (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
-      sendMessage(message);
+      setMessage("");
+      await sendMessage(message);
     }
   };
 
